@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS--深拷贝</title>
+</head>
+<body>
+
+<script>
+    var person={name:'chen',age:18,man:{hight:188}}
+    var son={sex:'男'};
+    function clone(p,s){
+        var s=s||{};//判断s对象是否存在，不存在则定义s为空对象
+        for(var prop in p){
+            if(typeof p[prop]=='object'){
+                s[prop]=(p[prop].constructor===Array)?[]:{};//三元运算，将s[prop]初始化为数组或者对象
+                clone(p[prop],s[prop])
+            }
+            else{
+                s[prop]=p[prop];
+            }
+        };
+        return s;//返回s对象
+    };
+    clone(person,son);
+    son.name='ze';
+    console.log(son.name);//打印ze
+    console.log(person.name);//打印chen
+    son.man.hight=1999;
+    console.log(son.man.hight);//打印1999
+    console.log(person.man.hight);//打印188
+</script>
+</body>
+</html>

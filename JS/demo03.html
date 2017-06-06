@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS--Bind()</title>
+</head>
+<body>
+<script>
+    function  func(a,b,c,d){
+        console.log(1);
+    } //func的length为4
+
+    var after = func.bind(null,1,2)  //这里输入了两个实参（1，2）绑定到了func函数的a，b
+
+    console.log(after.length) //after的length为 2
+
+</script>
+</body>
+</html>

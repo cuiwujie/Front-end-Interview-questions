@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var a=10;
+    var obt={
+        a:20,
+        fn:function(){
+            var a=30;
+            console.log(this.a);
+        }
+    }
+    obt.fn(); //20
+    obt.fn.call();//10
+    (obt.fn)();//20
+    (obt.fn,obt.fn)(); //10
+    new obt.fn();//undefined
+</script>
+</body>
+</html>
