@@ -24,6 +24,7 @@
 	  return args;
 	}
 4. Array.prototype.slice.call
+
 Array.prototype.slice.call(arguments)能将具有length属性的对象转成数组
 	
 	Array.prototype.slice.call(arguments)
