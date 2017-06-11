@@ -1,7 +1,7 @@
 # 创建对象的方式
 
 javascript创建对象简单的说,无非就是使用内置对象或各种自定义对象，当然还可以用JSON；但写法有很多种，也能混合使用。
-//
+
 # 对象字面量的方式
 person={firstname:"Mark",lastname:"Yun",age:25,eyecolor:"black"};
 # 用function来模拟无参的构造函数
