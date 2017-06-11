@@ -108,6 +108,6 @@
     };
     console.log(object1.getNameFunc()());//My Object
 
-## 实例2
+
 
 	
