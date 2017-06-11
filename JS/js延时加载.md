@@ -2,120 +2,121 @@
 
 1. DOM
 
-	window.onload = function () {  
-	    setTimeout(function () {  
-	  
-	        // reference to <head>    
-	        var head = document.getElementsByTagName('head')[0];  
-	  
-	        // a new CSS    
-	        var css = document.createElement('link');  
-	        css.type = "text/css";  
-	        css.rel = "stylesheet";  
-	        css.href = "new.css";  
-	  
-	        // a new JS    
-	        var js = document.createElement("script");  
-	        js.type = "text/javascript";  
-	        js.src = "new.js";  
-	  
-	        // preload JS and CSS    
-	        head.appendChild(css);  
-	        head.appendChild(js);  
-	  
-	        // preload image    
-	        new Image().src = "new.png";  
-	  
-	    }, 1000);  
-	};  
+		window.onload = function () {  
+		    setTimeout(function () {  
+
+			// reference to <head>    
+			var head = document.getElementsByTagName('head')[0];  
+
+			// a new CSS    
+			var css = document.createElement('link');  
+			css.type = "text/css";  
+			css.rel = "stylesheet";  
+			css.href = "new.css";  
+
+			// a new JS    
+			var js = document.createElement("script");  
+			js.type = "text/javascript";  
+			js.src = "new.js";  
+
+			// preload JS and CSS    
+			head.appendChild(css);  
+			head.appendChild(js);  
+
+			// preload image    
+			new Image().src = "new.png";  
+
+		    }, 1000);  
+		};  
 
 
-	<script type="text/javascript">
-	function downloadJSAtOnload() {
-		var element = document.createElement("script");
-		element.src = "defer.js";
-		document.body.appendChild(element);
-	}
-	if (window.addEventListener)
-		window.addEventListener("load", downloadJSAtOnload, false);
-	else if (window.attachEvent)
-		window.attachEvent("onload", downloadJSAtOnload);
-	else window.onload = downloadJSAtOnload;
-	</script>
+		<script type="text/javascript">
+		function downloadJSAtOnload() {
+			var element = document.createElement("script");
+			element.src = "defer.js";
+			document.body.appendChild(element);
+		}
+		if (window.addEventListener)
+			window.addEventListener("load", downloadJSAtOnload, false);
+		else if (window.attachEvent)
+			window.attachEvent("onload", downloadJSAtOnload);
+		else window.onload = downloadJSAtOnload;
+		</script>
 
 
 2. document.write
 
-	<script language="javascript" type="text/javascript">    
-	    function include(script_filename) {    
-	        document.write('<' + 'script');    
-	        document.write(' language="javascript"');    
-	        document.write(' type="text/javascript"');    
-	        document.write(' src="' + script_filename + '">');    
-	        document.write('</' + 'script' + '>');    
-	    }    
-	        
-	    var which_script = '1.js';    
-	    include(which_script);    
-	</script> 
+		<script language="javascript" type="text/javascript">    
+		    function include(script_filename) {    
+			document.write('<' + 'script');    
+			document.write(' language="javascript"');    
+			document.write(' type="text/javascript"');    
+			document.write(' src="' + script_filename + '">');    
+			document.write('</' + 'script' + '>');    
+		    }    
+
+		    var which_script = '1.js';    
+		    include(which_script);    
+		</script> 
 
 3. Iframe
 	
-	window.onload = function () {  
-	    setTimeout(function () {  
-	  
-	        // create new iframe    
-	        var iframe = document.createElement('iframe');  
-	        iframe.setAttribute("width", "0");  
-	        iframe.setAttribute("height", "0");  
-	        iframe.setAttribute("frameborder", "0");  
-	        iframe.setAttribute("name", "preload");  
-	        iframe.id = "preload";  
-	        iframe.src = "about:blank";  
-	        document.body.appendChild(iframe);  
-	  
-	        // gymnastics to get reference to the iframe document    
-	        iframe = document.all ? document.all.preload.contentWindow : window.frames.preload;  
-	        var doc = iframe.document;  
-	        doc.open(); doc.writeln("<html><body></body></html>"); doc.close();  
-	  
-	        // create CSS    
-	        var css = doc.createElement('link');  
-	        css.type = "text/css";  
-	        css.rel = "stylesheet";  
-	        css.href = "new.css";  
-	  
-	        // create JS    
-	        var js = doc.createElement("script");  
-	        js.type = "text/javascript";  
-	        js.src = "new.js";  
-	  
-	        // preload CSS and JS    
-	        doc.body.appendChild(css);  
-	        doc.body.appendChild(js);  
-	  
-	        // preload IMG    
-	        new Image().src = "new.png";  
-	  
-	    }, 1000);  
-	}; 
+	
+		window.onload = function () {  
+		    setTimeout(function () {  
+
+			// create new iframe    
+			var iframe = document.createElement('iframe');  
+			iframe.setAttribute("width", "0");  
+			iframe.setAttribute("height", "0");  
+			iframe.setAttribute("frameborder", "0");  
+			iframe.setAttribute("name", "preload");  
+			iframe.id = "preload";  
+			iframe.src = "about:blank";  
+			document.body.appendChild(iframe);  
+
+			// gymnastics to get reference to the iframe document    
+			iframe = document.all ? document.all.preload.contentWindow : window.frames.preload;  
+			var doc = iframe.document;  
+			doc.open(); doc.writeln("<html><body></body></html>"); doc.close();  
+
+			// create CSS    
+			var css = doc.createElement('link');  
+			css.type = "text/css";  
+			css.rel = "stylesheet";  
+			css.href = "new.css";  
+
+			// create JS    
+			var js = doc.createElement("script");  
+			js.type = "text/javascript";  
+			js.src = "new.js";  
+
+			// preload CSS and JS    
+			doc.body.appendChild(css);  
+			doc.body.appendChild(js);  
+
+			// preload IMG    
+			new Image().src = "new.png";  
+
+		    }, 1000);  
+		}; 
 
 4. Iframe static page
 
-	window.onload = function () {  
-	    setTimeout(function () {  
-	  
-	        // create a new frame and point to the URL of the static    
-	        // page that has all components to preload    
-	        var iframe = document.createElement('iframe');  
-	        iframe.setAttribute("width", "0");  
-	        iframe.setAttribute("height", "0");  
-	        iframe.setAttribute("frameborder", "0");  
-	        iframe.src = "preloader.html";  
-	        document.body.appendChild(iframe);  
-	  
-	    }, 1000);  
-	}; 
+		window.onload = function () {  
+		    setTimeout(function () {  
+
+			// create a new frame and point to the URL of the static    
+			// page that has all components to preload    
+			var iframe = document.createElement('iframe');  
+			iframe.setAttribute("width", "0");  
+			iframe.setAttribute("height", "0");  
+			iframe.setAttribute("frameborder", "0");  
+			iframe.src = "preloader.html";  
+			document.body.appendChild(iframe);  
+
+		    }, 1000);  
+		}; 
 
 5.  Ajax eval
 
@@ -123,24 +124,24 @@
 
 7. 通过函数进行封装
  
-	function loadScript(url, callback){
-	    var script = document.createElement ("script")
-	    script.type = "text/javascript";
-	    if (script.readyState){ //IE
-	        script.onreadystatechange = function(){
-	            if (script.readyState == "loaded" || script.readyState == "complete"){
-	                script.onreadystatechange = null;
-	                callback();
-	            }
-	        };
-	    } else { //Others
-	        script.onload = function(){
-	            callback();
-	        };
-	    }
-	    script.src = url;
-	    document.getElementsByTagName("head")[0].appendChild(script);
-	}
+		function loadScript(url, callback){
+		    var script = document.createElement ("script")
+		    script.type = "text/javascript";
+		    if (script.readyState){ //IE
+			script.onreadystatechange = function(){
+			    if (script.readyState == "loaded" || script.readyState == "complete"){
+				script.onreadystatechange = null;
+				callback();
+			    }
+			};
+		    } else { //Others
+			script.onload = function(){
+			    callback();
+			};
+		    }
+		    script.src = url;
+		    document.getElementsByTagName("head")[0].appendChild(script);
+		}
 
 
 (缺点是不能控制加载的顺序
@@ -174,21 +175,21 @@
 
 defer属性在浏览器之间表现并不一致。为了避免跨浏览器的差异，可以使用 “lazy loading”的方法，即直到用到该脚本时才加载。
 
-	function lazyload() {
-	    var elem = document.createElement("script");
-	    elem.type = "text/javascript";
-	    elem.async = true;
-	    elem.src = "script.js"; 
-	    document.body.appendChild(elem);
-	}
-	
-	if (window.addEventListener) {
-	    window.addEventListener("load", lazyload, false);
-	} else if (window.attachEvent) {
-	    window.attachEvent("onload", lazyload);
-	} else {
-	    window.onload = lazyload;
-	}
+		function lazyload() {
+		    var elem = document.createElement("script");
+		    elem.type = "text/javascript";
+		    elem.async = true;
+		    elem.src = "script.js"; 
+		    document.body.appendChild(elem);
+		}
+
+		if (window.addEventListener) {
+		    window.addEventListener("load", lazyload, false);
+		} else if (window.attachEvent) {
+		    window.attachEvent("onload", lazyload);
+		} else {
+		    window.onload = lazyload;
+		}
 
 # async(异步脚本)
 异步脚本：async属性也只适用于外部脚本文件，并告诉浏览器立即下载文件。 
@@ -197,18 +198,18 @@ defer属性在浏览器之间表现并不一致。为了避免跨浏览器的差
 
 是HTML5新增的属性，IE10和浏览器都是支持该属性的。该属性的作用是让脚本能异步加载，也就是说当浏览器遇到async属性的<script>时浏览器加载css一样是异步加载的。
 
-	<!DOCTYPE html>
-	<html>
-	<head>
-	    <meta charset="utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <title>异步加载</title>
-	    <script async type="text/javascript" src="test1.js"></script>
-	    <script async type="text/javascript" src="test2.js"></script>
-	</head>
-	<body>
-	</body>
-	</html>
+		<!DOCTYPE html>
+		<html>
+		<head>
+		    <meta charset="utf-8">
+		    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		    <title>异步加载</title>
+		    <script async type="text/javascript" src="test1.js"></script>
+		    <script async type="text/javascript" src="test2.js"></script>
+		</head>
+		<body>
+		</body>
+		</html>
 
 # 区别
 
