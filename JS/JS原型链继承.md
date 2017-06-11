@@ -6,13 +6,13 @@
 //
 1. 当我们需要一个属性时，JavaScript引擎会先看当前对象中是否有这个属性，如果没有的话，就会查找它的prototype对象是否有这个属性，如此递推下去，一致检索到Object内建对象。
 
-	function Func(){}
-	Func.prototype.name = "Xiaosong";
-	Func.prototype.getInfo = function() {
-	  return this.name;
-	}
-	var person = new Func();
-	console.log(person.getInfo());
-	//"Xiaosong"
-	console.log(Func.prototype);
-	//Func { name = "Xiaosong", getInfo = function() }
+		function Func(){}
+		Func.prototype.name = "Xiaosong";
+		Func.prototype.getInfo = function() {
+		  return this.name;
+		}
+		var person = new Func();
+		console.log(person.getInfo());
+		//"Xiaosong"
+		console.log(Func.prototype);
+		//Func { name = "Xiaosong", getInfo = function() }
