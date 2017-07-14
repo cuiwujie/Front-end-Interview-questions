@@ -8,7 +8,7 @@
 
 3. 布尔型（Boolean）
 
-4. 对象型（Object）
+4. 原始值（Null）
 
 5. 未定义（undefined）
 
