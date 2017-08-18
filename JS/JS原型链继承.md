@@ -1,3 +1,5 @@
+[详解继承1！](https://segmentfault.com/a/1190000008739672)
+[详解继承2！](https://segmentfault.com/a/1190000008754962)
 1.每个对象都会在其内部初始化一个属性，就是prototype(原型)，当我们访问一个对象的属性时，如果这个对象内部不存在这个属性，那么他就会去prototype里找这个属性，这个prototype又会有自己的prototype，
 于是就这样一直找下去，也就是我们平时所说的原型链的概念。
 关系：instance.constructor.prototype = instance.__proto__
@@ -16,3 +18,4 @@
 		//"Xiaosong"
 		console.log(Func.prototype);
 		//Func { name = "Xiaosong", getInfo = function() }
+
